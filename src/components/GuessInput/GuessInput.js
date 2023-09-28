@@ -3,25 +3,25 @@ import React from 'react';
 function GuessInput() {
   const [trialWord, setTrialWord] = React.useState('');
 
-  let trialWordUpper = trialWord.toUpperCase();
+  function handleSubmit(event) {
+    event.preventDefault();
+    console.log({trialWord});
+    setTrialWord('');
+  }
 
   return (
     <form
-      class="guess-input-wrapper"
-      onSubmit={event => {
-        event.preventDefault();
-        console.log({trialWordUpper});
-        setTrialWord('');
-      }}
+      className="guess-input-wrapper"
+      onSubmit={handleSubmit}
     >
-      <label for="guess-input">Enter guess:</label>
+      <label htmlFor="guess-input">Enter guess:</label>
       <input
         id="guess-input"
         type="text"
         pattern=".{5,5}"
-        value={trialWordUpper}
+        value={trialWord}
         onChange={event => {
-          setTrialWord(event.target.value)
+          setTrialWord(event.target.value.toUpperCase())
         }}
       />
     </form>

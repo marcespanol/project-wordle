@@ -1,10 +1,13 @@
 import React from 'react';
 
-function GuessInput({trialWord, setTrialWord, guessList}) {
+function GuessInput({handleGuessList}) {
+  const [trialWord, setTrialWord] = React.useState('');
 
   function handleSubmit(event) {
     event.preventDefault();
-    guessList.push(trialWord);
+    
+    handleGuessList(trialWord);
+
     setTrialWord('');
   }
 
@@ -17,7 +20,8 @@ function GuessInput({trialWord, setTrialWord, guessList}) {
       <input
         id="guess-input"
         type="text"
-        pattern=".{5,5}"
+        pattern="[a-zA-Z]{5}"
+        title="5 letter word"
         value={trialWord}
         onChange={event => {
           setTrialWord(event.target.value.toUpperCase())

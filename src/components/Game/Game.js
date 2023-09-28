@@ -11,13 +11,16 @@ const answer = sample(WORDS);
 console.info({ answer });
 
 function Game() {
-  const [trialWord, setTrialWord] = React.useState('');
   const [guessList, setGuessList] = React.useState([])
+
+  function handleGuessList(trialWord) {
+    setGuessList([...guessList, trialWord]);
+  }
 
   return (
     <>
-      <GuessTracker guessList={guessList}/>
-      <GuessInput trialWord={trialWord} setTrialWord={setTrialWord} guessList={guessList} />
+      <GuessTracker guessList={guessList} />
+      <GuessInput handleGuessList={handleGuessList} />
     </>
     
   )

@@ -4,7 +4,7 @@ function GuessTracker({guessList}) {
   return (
     <div className="guess-results">
         {guessList.map((word, i) => {
-          return <p key={i}>{word}</p>
+          return <p key={i} className="guess">{word}</p>
         })}
     </div>
   );

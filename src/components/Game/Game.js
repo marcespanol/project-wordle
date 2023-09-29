@@ -1,6 +1,7 @@
 import React from 'react';
 import GuessInput from '../GuessInput';
 import GuessTracker from '../GuessTracker';
+import EndBanner from '../EndBanner';
 
 import { sample } from '../../utils';
 import { WORDS } from '../../data';
@@ -12,6 +13,7 @@ console.info({ answer });
 
 function Game() {
   const [guessList, setGuessList] = React.useState([])
+  const [isDisabled, setIsDisabled] = React.useState(false);
 
   function handleGuessList(trialWord) {
     setGuessList([...guessList, trialWord]);
@@ -20,9 +22,9 @@ function Game() {
   return (
     <>
       <GuessTracker guessList={guessList} answer={answer}/>
-      <GuessInput handleGuessList={handleGuessList} />
+      <GuessInput handleGuessList={handleGuessList} isDisabled={isDisabled} />
+      <EndBanner guessList={guessList} answer={answer} isDisabled={isDisabled} setIsDisabled={setIsDisabled} />
     </>
-    
   )
 }
 

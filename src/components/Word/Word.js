@@ -20,7 +20,7 @@ function Word({ value, answer }) {
       {range(5).map((num) => {
         return (
           <Cell
-            key={{num}}
+            key={num}
             letter={result ? result[num].letter : undefined}
             status={result ? result[num].status : undefined}
           />
